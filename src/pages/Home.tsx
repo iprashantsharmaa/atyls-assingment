@@ -33,7 +33,7 @@ export function Home() {
       {showOverlay && (<LoginAndSignUpOverlay withOverLay onClose={onClose} />)}
       <div className="w-full h-full py-[4.5rem] pb-12 overflow-hidden mx-auto max-w-[44rem] flex flex-col">
         <div className="flex space-y-3 flex-col flex-shrink-0">
-          <span className="text-3xl text-title capitalize">{`Hello ${userName}`}</span>
+          <span className="text-3xl text-title capitalize">{`Hello ${userName ?? ''}`}</span>
           <span className="text-base font-normal text-subTitle">
             How are you doing today? Would you like to share something with the community 🤗
           </span>
