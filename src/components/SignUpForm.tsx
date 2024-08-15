@@ -7,7 +7,6 @@ import Input from './Input';
 import Button from './Button';
 import PasswordInput from './PasswordInput';
 import LoaderOverlay from './Loader';
-import CrossIcon from '../assets/icons/cross';
 
 type Props = {
   onLoginClick: () => void;
@@ -74,14 +73,6 @@ export function SignUpForm({ onLoginClick, onClose } : Props) {
     <>
       <LoaderOverlay isLoading={loading} />
       <div className="flex flex-col bg-primary border-2 border-custom-gradient rounded-lg py-10 px-6 w-[30rem] relative">
-        {!!onClose && (
-          <Button
-            onClick={onClose}
-            className="absolute right-5 top-5 rounded-full bg-secondaryDark flex items-center justify-center w-8 h-8"
-          >
-            <CrossIcon className="!w-2.5 !h-2.5" />
-          </Button>
-        )}
         <div className="flex flex-col items-center justify-center space-y-2">
           <span className="text-sm font-medium text-primaryLight">SIGN UP</span>
           <span className="text-white text-lg font-semibold">
