@@ -8,7 +8,7 @@ type Props = {
   subTitle?: string;
   avatarUrl?: string;
   postEmoji?: string;
-  postContent: string;
+  postContent: string | ReactNode;
   commentsCount?: number;
   actions?: ReactNode;
   isPost?: boolean;
@@ -26,6 +26,8 @@ export function PostCard({
   isPost = true,
 }: Props) {
   const titleClassName = clsx('text-lg font-medium text-title', titleClasses);
+  const isPostContentString = typeof postContent === 'string';
+
   return (
     <div className="flex flex-col space-y-4 bg-primary border border-border rounded-lg px-5 py-6">
       <div className="flex items-center space-x-4">
@@ -49,7 +51,12 @@ export function PostCard({
         <div className="bg-primary rounded-full flex items-center justify-center !w-12 !h-12">
           {postEmoji}
         </div>
-        <span className="flex-1 text-base font-normal text-subTitle">{postContent}</span>
+        {isPostContentString && (<span className="flex-1 text-base font-normal text-subTitle">{postContent}</span>)}
+        {!isPostContentString && (
+          <div className="flex-1">
+            {postContent}
+          </div>
+        )}
       </div>
       {actions}
       {isPost && (

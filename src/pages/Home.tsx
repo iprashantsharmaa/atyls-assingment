@@ -1,12 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { PostCard } from '../components/PostCard';
-import Button from '../components/Button';
 import { noop } from '../utils';
-import { LoginAndSignUpOverlay } from '../components/LoginAndSignUpOverlay';
 import { useGetPosts } from '../hooks/useGetPosts';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import { PostCard } from '../components/PostCard';
 import { PostLoader } from '../components/PostLoader';
+import { LoginAndSignUpOverlay } from '../components/LoginAndSignUpOverlay';
 
 export function Home() {
+  const [content, setContent] = useState('');
   const [showOverlay, setShowOverlay] = useState(false);
   const userName = useMemo(() => sessionStorage.getItem('loggedInUser'), []);
 
@@ -44,7 +46,14 @@ export function Home() {
             <>
               <PostCard
                 title="Create post"
-                postContent="How are you feeling today?"
+                postContent={(
+                  <Input
+                    className="flex-1 !border-0 !text-subTitle"
+                    value={content}
+                    onChange={setContent}
+                    placeholder="How are you feeling today?"
+                  />
+                )}
                 postEmoji="💬"
                 isPost={false}
                 actions={(
